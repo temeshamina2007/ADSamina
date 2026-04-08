@@ -19,9 +19,9 @@ public class BankingSystem {
         };
 
         while (true) {
-            System.out.println("\n--- MAIN MENU ---");
-            System.out.println("1 – Enter Bank (Opening & Transactions)");
-            System.out.println("2 – Enter ATM (Balance & Withdraw)");
+            System.out.println("\nMAIN MENU");
+            System.out.println("1 – Enter Bank (Opening and Transactions)");
+            System.out.println("2 – Enter ATM (Balance and Withdraw)");
             System.out.println("3 – Admin Area (Process Queues)");
             System.out.println("4 – Exit");
             int choice = sc.nextInt();
@@ -31,7 +31,7 @@ public class BankingSystem {
                 case 2: atmMenu(sc); break;
                 case 3: adminMenu(); break;
                 case 4: System.exit(0);
-                default: System.out.println("Invalid choice!");
+                default: System.out.println("Invalid choice");
             }
         }
     }
@@ -63,22 +63,22 @@ public class BankingSystem {
                 if (op == 2) {
                     foundAcc.balance += amt;
                     transactionHistory.push("Deposit of " + amt + " to " + name);
-                    System.out.println("Success! New balance: " + foundAcc.balance);
+                    System.out.println("Success New balance: " + foundAcc.balance);
                 } else if (op == 3) {
                     if (foundAcc.balance >= amt) {
                         foundAcc.balance -= amt;
                         transactionHistory.push("Withdrawal of " + amt + " from " + name);
-                        System.out.println("Success! New balance: " + foundAcc.balance);
+                        System.out.println("Success New balance: " + foundAcc.balance);
                     } else {
-                        System.out.println("Insufficient funds!");
+                        System.out.println("Insufficient funds");
                     }
                 }
             } else {
-                System.out.println("Account not found!");
+                System.out.println("Account not found");
             }
         } else if (op == 4) {
             if (!transactionHistory.isEmpty()) {
-                System.out.println("Undo → " + transactionHistory.pop() + " removed");
+                System.out.println("Undo" + transactionHistory.pop() + " removed");
             } else {
                 System.out.println("History is empty.");
             }
@@ -116,7 +116,7 @@ public class BankingSystem {
     }
 
     static void adminMenu() {
-        System.out.println("\n--- ADMIN AREA ---");
+        System.out.println("\nADMIN AREA");
         System.out.println("Processing account requests...");
         while (!accountRequests.isEmpty()) {
             BankAccount req = accountRequests.poll();
