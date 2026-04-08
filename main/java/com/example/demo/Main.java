@@ -20,7 +20,7 @@ public class Main {
         System.out.println("Output: " + factorial(5));
 
         System.out.println("\n Number 5: Fibonacci Number");
-        System.out.println("Output: " + fibonacci(17));
+        System.out.println("Output: " + fibonacci(5));
 
         System.out.println("\n Number 6: Power Function");
         System.out.println("Output: " + power(2, 10));
