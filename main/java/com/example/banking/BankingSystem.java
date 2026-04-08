@@ -42,7 +42,7 @@ public class BankingSystem {
         if (op == 1) {
             System.out.print("Enter name: ");
             String name = sc.nextLine();
-            accountRequests.add(new BankAccount("TMP" + (accountRequests.size()+1), name, 0)); // Task 5 [cite: 62]
+            accountRequests.add(new BankAccount("TMP" + (accountRequests.size()+1), name, 0));
             System.out.println("Request submitted to queue.");
         } else if (op == 2 || op == 3) {
             System.out.print("Enter username: ");
@@ -53,7 +53,7 @@ public class BankingSystem {
                     double amt = sc.nextDouble();
                     if (op == 2) {
                         acc.balance += amt;
-                        transactionHistory.push("Deposit " + amt + " to " + name); // Task 3 [cite: 47]
+                        transactionHistory.push("Deposit " + amt + " to " + name);
                     } else {
                         acc.balance -= amt;
                         transactionHistory.push("Withdraw " + amt + " from " + name);
@@ -65,11 +65,11 @@ public class BankingSystem {
             System.out.println("Account not found!");
         } else if (op == 4) {
             if (!transactionHistory.isEmpty()) {
-                System.out.println("Undo → " + transactionHistory.pop() + " removed"); // Task 3 [cite: 48]
+                System.out.println("Undo → " + transactionHistory.pop() + " removed");
             }
         } else if (op == 5) {
             System.out.print("Bill name (e.g. Internet): ");
-            billQueue.add(sc.nextLine()); // Task 4 [cite: 54]
+            billQueue.add(sc.nextLine());
         }
     }
 
@@ -96,13 +96,12 @@ public class BankingSystem {
     static void adminMenu() {
         System.out.println("Processing account requests...");
         while (!accountRequests.isEmpty()) {
-            BankAccount req = accountRequests.poll(); // FIFO [cite: 63]
-            accounts.add(req);
+            BankAccount req = accountRequests.poll();
             System.out.println("Account created for: " + req.username);
         }
         System.out.println("Processing bills...");
         while (!billQueue.isEmpty()) {
-            System.out.println("Paid: " + billQueue.poll()); // Task 4 [cite: 55]
+            System.out.println("Paid: " + billQueue.poll());
         }
     }
 }
