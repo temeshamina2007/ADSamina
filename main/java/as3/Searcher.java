@@ -1,4 +1,4 @@
-package com.example.as3;
+package as3;
 
 public class Searcher {
 
