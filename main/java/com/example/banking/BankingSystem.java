@@ -4,10 +4,12 @@ import java.util.*;
 
 public class BankingSystem {
 
+
     static LinkedList<BankAccount> accounts = new LinkedList<>();
     static Stack<String> transactionHistory = new Stack<>();
-    static Queue<String> billQueue = new LinkedList<>();
-    static Queue<BankAccount> accountRequests = new LinkedList<>();
+
+    static MyQueue<String> billQueue = new MyQueue<>();
+    static MyQueue<BankAccount> accountRequests = new MyQueue<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -24,6 +26,7 @@ public class BankingSystem {
             System.out.println("2 – Enter ATM (Balance and Withdraw)");
             System.out.println("3 – Admin Area (Process Queues)");
             System.out.println("4 – Exit");
+            System.out.print("Choice: ");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -62,13 +65,13 @@ public class BankingSystem {
                 double amt = sc.nextDouble();
                 if (op == 2) {
                     foundAcc.balance += amt;
-                    transactionHistory.push("Deposit of " + amt + " to " + name);
-                    System.out.println("Success New balance: " + foundAcc.balance);
+                    transactionHistory.push("Deposit: " + amt + " to " + name);
+                    System.out.println("Success. New balance: " + foundAcc.balance);
                 } else if (op == 3) {
                     if (foundAcc.balance >= amt) {
                         foundAcc.balance -= amt;
-                        transactionHistory.push("Withdrawal of " + amt + " from " + name);
-                        System.out.println("Success New balance: " + foundAcc.balance);
+                        transactionHistory.push("Withdrawal: " + amt + " from " + name);
+                        System.out.println("Success. New balance: " + foundAcc.balance);
                     } else {
                         System.out.println("Insufficient funds");
                     }
@@ -78,12 +81,12 @@ public class BankingSystem {
             }
         } else if (op == 4) {
             if (!transactionHistory.isEmpty()) {
-                System.out.println("Undo" + transactionHistory.pop() + " removed");
+                System.out.println("Undo: " + transactionHistory.pop() + " removed");
             } else {
                 System.out.println("History is empty.");
             }
         } else if (op == 5) {
-            System.out.print("Bill name: ");
+            System.out.print("Bill name (e.g., Internet): ");
             billQueue.add(sc.nextLine());
             System.out.println("Bill added to queue.");
         }
@@ -98,13 +101,13 @@ public class BankingSystem {
                 System.out.println("1. Balance enquiry\n2. Withdraw");
                 int choice = sc.nextInt();
                 if (choice == 1) {
-                    System.out.println("Balance: " + acc.balance);
+                    System.out.println("Current Balance: " + acc.balance);
                 } else if (choice == 2) {
                     System.out.print("Amount: ");
                     double amt = sc.nextDouble();
                     if (acc.balance >= amt) {
                         acc.balance -= amt;
-                        System.out.println("Done. New balance: " + acc.balance);
+                        System.out.println("Success. New balance: " + acc.balance);
                     } else {
                         System.out.println("Not enough money.");
                     }
