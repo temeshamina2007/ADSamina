@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Sorter {
 
-    // Basic Sorting: Bubble Sort
+
     public void basicSort(int[] arr) {
         int n = arr.length;
 
@@ -22,7 +22,7 @@ public class Sorter {
         }
     }
 
-    // Advanced Sorting: Quick Sort
+
     public void advancedSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }

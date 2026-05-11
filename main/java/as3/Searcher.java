@@ -2,7 +2,7 @@ package as3;
 
 public class Searcher {
 
-    // Binary Search
+
     public int search(int[] arr, int target) {
         int low = 0;
         int high = arr.length - 1;
